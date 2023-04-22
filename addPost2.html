@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <title>Agro-Sage</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area ">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              Agro-Sage
+            </span>
+          </a>
+          <div class="" id="">
+            <div class="User_option">
+              <form class="form-inline my-2  mb-3 mb-lg-0">
+                <input type="search" placeholder="Search" />
+                <button class="btn   my-sm-0 nav_search-btn" type="submit"></button>
+              </form>
+            </div>
+
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1"> </span>
+                <span class="s-2"> </span>
+                <span class="s-3"> </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="service.html">Service</a>
+                <a href="contact.html">Contact</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <div class="container mt-5">
+    <form id="productForm" method="post" action="/app.js">
+      <div class="mb-3">
+        <label for="productName" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          name="name"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="productDesc" class="form-label">Description of Crop / Fruit / Vegetable</label>
+        <textarea
+          class="form-control"
+          id="productDesc"
+          name="desc"
+          required
+        ></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="productPrice" class="form-label">Price/Kg</label>
+        <input
+          type="number"
+          class="form-control"
+          id="productPrice"
+          name="price"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="productImage" class="form-label">Image</label>
+        <input
+          type="file"
+          class="form-control"
+          id="productImage"
+          name="image"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="row mt-5" id="productList"></div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.min.js"
+    integrity="sha512-Yy1X9a1n0DgqoY8dbM3NPxmkLHJTywz5r5r5lCj+y9+tZH5hRa1bYgYjvQZzsc/PxO+k/n1IKS6jsyv2FfcU6A=="
+    crossorigin="anonymous"
+  ></script>
+
+  <script>
+    const productForm = document.getElementById("productForm");
+    const productList = document.getElementById("productList");
+
+    productForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("productName").value;
+      const desc = document.getElementById("productDesc").value;
+      const price = document.getElementById("productPrice").value;
+      const image = document.getElementById("productImage").files[0];
+
+      // create product card
+      const productCard = document.createElement("div");
+      productCard.classList.add("col-md-4");
+
+      const cardHtml = `
+  <div class="card mb-4">
+    <div class="card-img-container">
+      <img class="card-img-top" src="${URL.createObjectURL(
+        image
+      )}" alt="${name}">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">${name}</h5>
+      <p class="card-text">${desc}</p>
+      <p class="card-text">Rs${price}</p>
+    </div>
+  </div>
+`;
+      productCard.innerHTML = cardHtml;
+
+      productList.appendChild(productCard);
+
+      // reset form
+      productForm.reset();
+    });
+  </script>
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section ">
+    <p>
+      &copy; <span id="displayDate"></span> All Rights Reserved. Design by
+      <a href="https://html.design/">Free Html Templates</a>
+    </p>
+  </footer>
+  <!-- end  footer section -->
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <!-- End Google Map -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <script src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+
+</body>
+
+</html>
