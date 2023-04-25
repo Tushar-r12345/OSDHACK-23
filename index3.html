@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!---<title> Responsive Registration Form | CodingLab </title>--->
+    <link rel="stylesheet" href="style3.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="app.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Crop Prediction</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Region</span>
+            <input type="text" placeholder="Enter nitrogen content value" id="uir" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Crop Name</span>
+            <input type="text" placeholder="Enter Phosphorous content value" id="uicn"  required>
+          </div>
+          <div class="input-box">
+            <span class="details">Day</span>
+            <input type="text" placeholder="Enter Potassium content value" id="uid" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Month</span>
+            <input type="text" placeholder="Enter Temperature content value" id="uimon" required>
+          </div>
+          
+        </div>
+        <div class="button">
+          <input type="submit" value="Test" onclick="onClickedEstimatePrice2()" />
+        </div>
+        <div id="uiEstimatedPrice" class="result"><h2></h2></div>
+
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Price Estimation</title>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href="style4.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="form-container">
+    <div class="form-box">
+	<h1>Price Estimation</h1>
+	<label for="region">Region:</label>
+	<select id="region" >
+		<option value="">Select Region</option>
+		<option value="hyderabad-telangana-southern">Hyderabad - Telangana - (Southern)</option>
+		<option value="idukki-kerala-southernwestern">Idukki - Kerala - (Southern Western)</option>
+		<option value="kollam-kerala-southernwestern">Kollam - Kerala - (Southern Western)</option>
+		<option value="ranga-reddy-telangana-southern">Ranga Reddy - Telangana - (Southern)</option>
+        <option value="sonipat-haryana">Sonipat - Haryana - (Northern)</option>
+        <option value="surat-gujarat">Surat - Gujarat - (Northern)</option>
+	</select>
+	<br><br>
+	<label for="crop">Crop:</label>
+	<select id="crop" >
+		<option value="">Select Crop</option>
+		<option value="apple">Apple</option>
+		<option value="arhar-dal-tur-dal">Arhar Dal(Tur Dal)</option>
+		<option value="banana">Banana</option>
+		<option value="beans">Beans</option>
+        <option value="black-gram">Black Gram (Urd Beans)(Whole)</option>
+        <option value="coconut">Coconut</option>
+        <option value="coffee">Coffee</option>
+        <option value="cotton">Cotton</option>
+        <option value="grapes">Grapes</option>
+	</select>
+	<br><br>
+	<label for="day">Day:</label>
+	<input type="number" id="day" name="day" min="1" max="31">
+	<br><br>
+	<label for="month">Month:</label>
+	<input type="number" id="month" name="month" min="1" max="12">
+	<br><br>
+	<button onclick="calculatePrice()">Calculate Price</button>
+	<p id="price" style="font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-bottom: 10px;"></p>
+    </div>
+    </div>
+
+	<script>
+		function calculatePrice() {
+			const region = document.getElementById("region").value;
+			const cropName = document.getElementById("crop").value;
+			const day = Number(document.getElementById("day").value);
+			const month = Number(document.getElementById("month").value);
+
+			let price = 0;
+
+			if ((region === "hyderabad-telangana-southern" || region === "idukki-kerala-southernwestern" || region === "kollam-kerala-southernwestern" || region === "ranga-reddy-telangana-southern") && (cropName === "apple" || cropName === "arhar-dal-tur-dal" || cropName === "banana" || cropName === "beans") && day >= 1 && day <= 31 && month >= 1 && month <= 12) {
+				price = 5300;
+			}
+            if ((region === "hyderabad-telangana-southern" || region === "idukki-kerala-southernwestern" || region === "kollam-kerala-southernwestern" || region === "ranga-reddy-telangana-southern") && (cropName === "black-gram" || cropName === "coconut" || cropName === "grapes") && day >= 1 && day <= 31 && month >= 1 && month <= 12) {
+				price = 3500;
+			}
+            if ((region === "hyderabad-telangana-southern" || region === "idukki-kerala-southernwestern" || region === "kollam-kerala-southernwestern" || region === "ranga-reddy-telangana-southern") && (cropName === "black-gram" || cropName === "coffee" || cropName === "cotton") && day >= 1 && day <= 31 && month >= 1 && month <= 12) {
+				price = 2300;
+			}
+
+            if ((region === "sonipat-haryana" || region === "surat-gujarat") && (cropName === "apple" || cropName === "arhar-dal-tur-dal" || cropName === "banana" || cropName === "beans") && day >= 1 && day <= 31 && month >= 1 && month <= 12) {
+				price = 5600;
+			}
+            if ((region === "sonipat-haryana" || region === "surat-gujarat") && (cropName === "black-gram" || cropName === "grapes") && day >= 1 && day <= 31 && month >= 1 && month <= 12) {
+				price = 4900;
+			}
+            if ((region === "sonipat-haryana" || region === "surat-gujarat") && (cropName === "black-gram" || cropName === "coffee" || cropName === "cotton") && day >= 1 && day <= 31 && month >= 1 && month <= 12) {
+				price = 2200;
+			}
+
+
+			document.getElementById("price").innerHTML = `Estimated price: ${price}`;
+		}
+	</script>
+</body>
+</html>
